@@ -13,7 +13,7 @@ const BlogCard = ({ title, summary, status, id }) => {
         <Link to={`/blog/${id}`} className="text-blue-600 hover:underline">
             {title}
         </Link>
-        <p className="mt-2">{summary}</p>
+        <p className="mt-2">{`${summary.substrin(0, 100)} ...`}</p>
         <p className="mt-2 text-sm font-semibold">{status.charAt(0).toUpperCase() + status.slice(1)}</p>
     </div>
     )
