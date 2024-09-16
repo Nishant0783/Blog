@@ -1,5 +1,4 @@
 // backend/controllers/blogController.js
-import mongoose from 'mongoose';
 import { Blog } from '../models/Blog.model.js';
 import { responseUtil } from '../utils/responseUtil.js';
 import { DashboardStats } from '../models/DashboardStats.model.js';
@@ -20,7 +19,7 @@ const createBlog = async (req, res) => {
             content, // This will contain HTML content from CKEditor
             tags,
             author: userId,
-            status: 'approved', // Default status (you can customize this)
+            status: 'pending', // Default status
         });
 
         await newBlog.save();

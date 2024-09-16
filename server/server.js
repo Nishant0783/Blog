@@ -3,6 +3,7 @@ import express, { json } from 'express';
 import authRoutes from './routes/auth.routes.js';
 import blogRoutes from './routes/blog.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 import errorHandler from './middlewares/error.middleware.js';
 import cors from 'cors';
 
@@ -17,6 +18,7 @@ app.use(cors()); // for handling CORS
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Error handling middleware
 app.use(errorHandler);

@@ -9,6 +9,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import BlogDetail from './../components/blog/BlogDetail';
 import EditBlog from './../pages/EditBlog';
 import CreateBlog from '../pages/CreateBlog';
+import AdminDashboard from '../pages/AdminDashboard';
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
             { path: '', element: <HomePage /> },
             { path: '/login', element: <LoginPage /> },
             { path: '/signup', element: <SignupPage /> },
+            { path: '/admin', element: <AdminDashboard />},
             {
                 path: '/createblog',
                 element: (
@@ -27,8 +29,8 @@ const router = createBrowserRouter([
                     </PrivateRoute>
                 ),
             },
-            { path: '/blogs/:id', element: <BlogDetail /> },
-            { path: '/blogs/edit/:id', element: <EditBlog /> },
+            { path: '/blog/:id', element: <BlogDetail /> },
+            { path: '/blog/edit/:id', element: <EditBlog /> },
             {
                 path: '/dashboard',
                 element: (

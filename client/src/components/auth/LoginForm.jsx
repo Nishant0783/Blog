@@ -18,9 +18,15 @@ const LoginForm = () => {
 
         dispatch(login({ username, password }))
             .unwrap()
-            .then(() => {
+            .then((data) => {
+                console.log("data is: ", data.data.user.isAdmin)
                 toast.success('Login successful');
-                navigate('/'); 
+                if (data.data.user.isAdmin === true) {
+                    navigate('/admin')
+                } else {
+                    navigate('/');
+                }
+
             })
             .catch((err) => {
                 toast.error(err.message || 'Login failed');

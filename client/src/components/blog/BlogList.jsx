@@ -1,18 +1,23 @@
 // src/components/blog/BlogList.jsx
 import BlogCard from './BlogCard';
+import parse from 'html-react-parser';
 
-const BlogList = ({ blogs }) => (
-    <div className="grid grid-cols-1 gap-4">
-        {blogs.map((blog) => (
-            <BlogCard
-                key={blog._id}
-                title={blog.title}
-                summary={blog.summary}
-                author={blog.author}
-                status={blog.status}
-            />
-        ))}
-    </div>
-);
+const BlogList = ({ blogs }) => {
+    console.log("Blogs are: ", blogs);
+    return (
+        <div className="grid grid-cols-1 gap-4">
+            {blogs.map((blog) => (
+                <BlogCard
+                    key={blog._id}
+                    title={blog.title}
+                    summary={parse(blog.content)}
+                    status={blog.status}
+                    id={blog._id}
+                />
+            ))}
+        </div>
+    )
+};
 
 export default BlogList;
+ 

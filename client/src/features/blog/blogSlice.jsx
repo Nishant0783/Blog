@@ -9,6 +9,12 @@ export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (type = 'al
     return response.data.data;
 });
 
+// Fetch single blog by ID action
+export const fetchBlogById = createAsyncThunk('blogs/fetchBlogById', async (id) => {
+    const response = await axios.get(`/blogs/${id}`);
+    return response.data.data;
+});
+
 // Create blog action
 export const createBlog = createAsyncThunk('blogs/createBlog', async (blogData, thunkAPI) => {
     try {
@@ -23,6 +29,7 @@ const blogSlice = createSlice({
     name: 'blogs',
     initialState: {
         blogs: [],
+        blog: null, // Add this to hold the single blog data
         stats: { approvedCount: 0, rejectedCount: 0 },
         status: 'idle',
         error: null,
@@ -49,6 +56,18 @@ const blogSlice = createSlice({
                 state.blogs = action.payload;
             })
             .addCase(fetchBlogs.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            })
+            // Fetch single blog by ID
+            .addCase(fetchBlogById.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchBlogById.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.blog = action.payload;
+            })
+            .addCase(fetchBlogById.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
