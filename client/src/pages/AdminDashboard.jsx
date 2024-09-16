@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BlogList from '../components/blog/BlogList.jsx';
-import { fetchBlogsByStatus, handleAdminAction } from '../features/admin/adminSlice'; // Correct import
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchBlogsByStatus } from '../features/admin/adminSlice'; // Correct import
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();

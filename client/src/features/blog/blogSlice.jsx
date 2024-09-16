@@ -4,7 +4,7 @@ import axios from '../../api/axios';
 
 // Fetch all blogs action
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (type = 'all') => {
-    const url = type === 'user' ? '/blogs/user' : '/blogs/get-blogs'; // Adjust URLs based on your API routes
+    const url = type === 'user' ? '/blogs/user' : '/blogs/get-blogs';
     const response = await axios.get(url);
     return response.data.data;
 });
