@@ -19,7 +19,7 @@ const createBlog = async (req, res) => {
             content, // This will contain HTML content from CKEditor
             tags,
             author: userId,
-            status: 'pending', // Default status
+            status: 'approved', // Default status
         });
 
         await newBlog.save();
