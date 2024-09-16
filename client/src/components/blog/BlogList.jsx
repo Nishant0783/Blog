@@ -10,7 +10,7 @@ const BlogList = ({ blogs }) => {
                 <BlogCard
                     key={blog._id}
                     title={blog.title}
-                    summary={parse(blog.content)}
+                    summary={(parse(blog.content)).substring(0, 100)}
                     status={blog.status}
                     id={blog._id}
                 />
