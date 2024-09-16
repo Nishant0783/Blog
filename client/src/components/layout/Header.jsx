@@ -70,6 +70,13 @@ export default function Header() {
                                         >
                                             Dashboard
                                         </Link>
+
+                                        <Link
+                                            to="/create-blog"
+                                            className="block px-4 py-2 text-sm hover:bg-blue-100"
+                                        >
+                                            Create Blog
+                                        </Link>
                                         <button
                                             onClick={handleLogout}
                                             className="block w-full text-left px-4 py-2 text-sm hover:bg-blue-100"

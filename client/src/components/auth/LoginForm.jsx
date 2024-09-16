@@ -35,6 +35,7 @@ const LoginForm = () => {
 
     return (
         <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
+            <p className='text-orange-500'>for admin: username: admin, password: adminPass@1234</p>
             <h2 className="text-2xl font-bold mb-4 text-gray-800">Login</h2>
             <form onSubmit={handleSubmit}>
                 <FormInput
