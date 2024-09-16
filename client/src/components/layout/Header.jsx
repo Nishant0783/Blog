@@ -72,7 +72,7 @@ export default function Header() {
                                         </Link>
 
                                         <Link
-                                            to="/create-blog"
+                                            to="/createblog"
                                             className="block px-4 py-2 text-sm hover:bg-blue-100"
                                         >
                                             Create Blog
