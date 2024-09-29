@@ -16,9 +16,16 @@ export const fetchBlogById = createAsyncThunk('blogs/fetchBlogById', async (id) 
 });
 
 // Create blog action
-export const createBlog = createAsyncThunk('blogs/createBlog', async (blogData, thunkAPI) => {
+export const createBlog = createAsyncThunk('blogs/createBlog', async (formData, thunkAPI) => {
+    console.log("Blog data in silce is: ", formData);
     try {
-        const response = await axios.post('/blogs/create', blogData);
+        const response = await axios.post('/blogs/create', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
+        
+        );
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response.data.message || 'Failed to create blog');

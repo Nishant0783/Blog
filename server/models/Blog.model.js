@@ -4,6 +4,7 @@ const blogSchema = new mongoose.Schema({
     title: String,
     content: String,
     tags: [String],
+    images: [String],
     status: { type: String, default: 'pending' }, // 'pending', 'approved', 'rejected'
     adminComments: String,
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }

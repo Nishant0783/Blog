@@ -32,6 +32,20 @@ const BlogDetail = () => {
                     <p>{parse(blog.content)}</p>
                 </div> 
             </div>
+
+            {blog.images && blog.images.length > 0 && (
+                <div>
+                    {blog.images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={`data:image/png;base64,${image}`}
+                            alt={`Blog Image ${index + 1}`}
+                            style={{ width: '100px', height: '100px', marginTop: '20px' }}
+                        />
+                    ))}
+                </div>
+            )}
+
             <div className="text-center">
                 <Link to="/" className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Back to Blogs</Link>
             </div>

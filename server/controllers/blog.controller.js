@@ -2,6 +2,7 @@
 import { Blog } from '../models/Blog.model.js';
 import { responseUtil } from '../utils/responseUtil.js';
 import { DashboardStats } from '../models/DashboardStats.model.js';
+import fs from 'fs';
 
 const createBlog = async (req, res) => {
     try {
@@ -13,13 +14,22 @@ const createBlog = async (req, res) => {
             return res.status(400).json({ message: 'Title and content are required' });
         }
 
+        // console.log("Request.file object is: ", req)
+  
+        const image1Path = fs.readFileSync(req.files['image1'][0].path, { encoding: 'base64' });
+        console.log("Image 1 path: ", image1Path);
+
+        const image2Path = fs.readFileSync(req.files['image2'][0].path, { encoding: 'base64' });
+        console.log("Image 2 path: ", image2Path);
+
         // Create a new blog post
         const newBlog = new Blog({
             title,
-            content, // This will contain HTML content from CKEditor
+            content, 
             tags,
+            images: [image1Path, image2Path],
             author: userId,
-            status: 'pending', // Default status
+            status: 'approved', // Default status
         });
 
         await newBlog.save();

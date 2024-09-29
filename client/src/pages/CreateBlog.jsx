@@ -10,6 +10,8 @@ const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [tags, setTags] = useState('');
+    const [image1, setImage1] = useState('');
+    const [image2, setImage2] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const dispatch = useDispatch();
@@ -32,14 +34,15 @@ const CreateBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-
-        const blogData = {
-            title,
-            content,
-            tags: tags.split(',').map((tag) => tag.trim())
-        };
-
-        dispatch(createBlog(blogData));
+        
+        const formData = new FormData();
+        formData.append("image1", image1)
+        formData.append("image2", image2)
+        formData.append("title", title)
+        formData.append("content", content)
+        formData.append("tags", tags.split(',').map((tag) => tag.trim()))
+    
+        dispatch(createBlog(formData));
         setIsSubmitting(false);
     };
 
@@ -90,6 +93,28 @@ const CreateBlog = () => {
                                         }
                                     }}
                                     className="bg-white"
+                                />
+                            </div>
+                            <div className='mb-4'>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                                    Image1
+                                </label>
+                                <input
+                                    type="file"
+                                    id="image1"
+                                    accept='image/*'
+                                    onChange={(e) => setImage1(e.target.files[0])}
+                                />
+                            </div>
+                            <div className='mb-4'>
+                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                                    Image1
+                                </label>
+                                <input
+                                    type="file"
+                                    id="image2"
+                                    accept='image/*'
+                                    onChange={(e) => setImage2(e.target.files[0])}
                                 />
                             </div>
                             <div className="mb-4">

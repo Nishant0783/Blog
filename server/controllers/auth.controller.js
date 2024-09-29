@@ -45,11 +45,11 @@ const login = async (req, res) => {
         if (!user || !(await user.comparePassword(password))) {
             throw new Error('Invalid credentials');
         }
-        console.log("User found")
 
-        console.log("User is: ", user)
+
+
         const token = generateToken(user);
-        console.log("Generated token: ", token)
+   
         res.status(200).json(responseUtil({ token, user }, 'Login successful'));
     } catch (error) {
         console.log("Error in login: ", error.message)

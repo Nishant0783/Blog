@@ -12,6 +12,7 @@ const BlogList = ({ blogs }) => {
                     summary={parse(blog.content)}
                     status={blog.status}
                     id={blog._id}
+                    images={blog.images}
                 />
             ))}
         </div>

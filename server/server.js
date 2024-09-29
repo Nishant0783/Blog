@@ -12,7 +12,10 @@ const app = express();
 
 // Middleware
 app.use(json()); // for parsing application/json
-app.use(cors()); // for handling CORS
+
+app.use(cors({
+    origin: '*'
+}));
 
 // Routes
 app.use('/api/auth', authRoutes);
